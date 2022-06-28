@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "./pb";
+
+import "processor_message.proto";
+import "memory_message.proto";
+import "storage_message.proto";
+import "keyboard_message.proto";
+import "screen_message.proto";
+import "google/protobuf/timestamp.proto";
+
+message Laptop {
+  string id = 1;
+  string name = 2;
+  string brand = 3;
+  CPU cpu = 4;
+  Memory ram = 5;
+  repeated GPU gpus = 6;
+  repeated Storage storages = 7;
+  Keyboard keyboard = 8;
+  Screen screen = 9;
+  oneof weight {
+    double weight_kg = 10;
+    double weight_lb = 11;
+  }
+  double price_usd = 12;
+  uint32 release_year = 13;
+  google.protobuf.TimeStamp updated_at = 14;
+}
